@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Story;
+import io.qameta.allure.junit4.DisplayName;
 
 public class PesquisarFornecedorTest {
 	
@@ -26,11 +28,12 @@ public class PesquisarFornecedorTest {
 		driver.navigate().to(BASE_URL);
 		Thread.sleep(2000);
 
-		
 		return driver;
 	}
 	
 	@Test
+	@DisplayName("Deve realizar uma pesquisa de fornecedor por nome")
+	@Story("Pesquisa de Fornecedor")
 	public void deveRealizarumaPesquisadeFornecedorPorNome () throws MalformedURLException, InterruptedException {
 	
 		WebDriver driver = acessarAplicacao();
@@ -58,6 +61,8 @@ public class PesquisarFornecedorTest {
 	
 	
 	@Test
+	@DisplayName("Deve realizar uma pesquisa de fornecedor por CNPJ")
+	@Story("Pesquisa de Fornecedor")
 	public void deveRealizarumaPesquisadeFornecedorPorCNPJ () throws MalformedURLException, InterruptedException {
 	
 		WebDriver driver = acessarAplicacao();
@@ -84,6 +89,8 @@ public class PesquisarFornecedorTest {
 	}
 	
 	@Test
+	@DisplayName("Deve realizar uma pesquisa de fornecedor por CNPJ com mascara")
+	@Story("Pesquisa de Fornecedor")
 	public void deveRealizarumaPesquisadeFornecedorPorCNPJComMascara () throws MalformedURLException, InterruptedException {
 	
 		WebDriver driver = acessarAplicacao();
@@ -109,5 +116,32 @@ public class PesquisarFornecedorTest {
 		
 	}
 	
-
+	@Test
+	@DisplayName("Deve retornar Sua Busca Nao Retornou Resultados")
+	@Story("Pesquisa de Fornecedor")
+	public void deveRetornarSuaBuscaNaoRetornouResultados () throws MalformedURLException, InterruptedException {
+	
+		WebDriver driver = acessarAplicacao();
+				
+		try {
+			
+			driver.get(BASE_URL);
+		   // driver.findElement(By.xpath("//*[text() = \"Administrativo e Ferramentas\"]")).click();
+		   //driver.findElement(By.xpath("//*[text() = \"Painel de Contratos\"]")).click();
+			 Thread.sleep(1000);
+		    driver.findElement(By.cssSelector("i.fa-regular.fa-user")).click();
+		    driver.findElement(By.xpath("//*[@id=\"search-provider\"]")).sendKeys("Fornecedor não Existe");
+		    driver.findElement(By.xpath("(//*[text() = \"Buscar\"])[2]")).click();
+		    Thread.sleep(4000);
+		    Allure.addAttachment("Sua Busca Nao Retornou Resultados", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+		    String msn = driver.findElement(By.xpath("//*[@id=\"results\"]/div/strong")).getText();  
+		    Assert.assertEquals(msn, "Sua busca não retornou resultados.");
+			
+		} finally {
+			
+			driver.quit();
+		}
+		
+	}
+	
 }

@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Story;
+import io.qameta.allure.junit4.DisplayName;
 
 public class HomeTest {
 	//adcionar novo Submenu
@@ -42,7 +44,8 @@ public class HomeTest {
 	}
 
 	@Test
-	
+	@DisplayName("Menu Administrativo E Ferramentas")
+	@Story("Comparação da Home")	
 	public void deveValidarMenuAdministrativoEFerramentas() throws MalformedURLException, InterruptedException {
 		
 		WebDriver driver = acessarAplicacao();
@@ -93,7 +96,7 @@ public class HomeTest {
 			
 			String menuPaineldeContratos = driver.findElement(By.linkText("Painel de Contratos")).getText();
 			Assert.assertEquals("Painel de Contratos", menuPaineldeContratos);
-			Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+			Allure.addAttachment("Menu Administrativo E Ferramentas", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 			
 			
 		} finally {			
@@ -103,6 +106,8 @@ public class HomeTest {
 	}
 	
 	@Test
+	@DisplayName("Menu Estrategia")
+	@Story("Comparação da Home")
 	public void deveValidarMenuEstrategia() throws MalformedURLException, InterruptedException {
 	
 		WebDriver driver = acessarAplicacao();
@@ -142,7 +147,7 @@ public class HomeTest {
 			Assert.assertEquals("Planos de transição de processos", menuPlanosTransicao);
 			
 			String menuZenite = driver.findElement(By.linkText("Zênite")).getText();
-			Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+			Allure.addAttachment("Menu Estrategia", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 			Assert.assertEquals("Zênite", menuZenite);
 
 			
@@ -154,6 +159,8 @@ public class HomeTest {
 	}
 
 	@Test
+	@DisplayName("Menu Finanças e RI")
+	@Story("Comparação da Home")
 	public void deveValidarMenuFinançasRI() throws MalformedURLException, InterruptedException {
 		
 		WebDriver driver = acessarAplicacao();
@@ -171,7 +178,7 @@ public class HomeTest {
 			Assert.assertEquals("Demonstrações contábeis", menuDemostracoesContabeis);
 			
 			String menuNegociacaoValoresMobiliarios =driver.findElement(By.linkText("Negociação com valores mobiliários")).getText();
-			Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+			Allure.addAttachment("Menu Finanças RI", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 			Assert.assertEquals("Negociação com valores mobiliários", menuNegociacaoValoresMobiliarios);
 
 		} finally {
@@ -182,6 +189,8 @@ public class HomeTest {
 	}
 	
 	@Test
+	@DisplayName("Menu Governaca")
+	@Story("Comparação da Home")
 	public void deveValidarGovernaca() throws MalformedURLException, InterruptedException {
 		
 		WebDriver driver = acessarAplicacao();
@@ -223,7 +232,7 @@ public class HomeTest {
 			Assert.assertEquals("Portal SUPEX GRC", menuPortalSUPEX);
 			
 			String menuProgramaIntegridade = driver.findElement(By.linkText("Programa de Integridade")).getText();
-			Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+			Allure.addAttachment("Menu Validar Governaca", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 			Assert.assertEquals("Programa de Integridade", menuProgramaIntegridade);
 			
 
@@ -235,6 +244,8 @@ public class HomeTest {
 	}
 	
 	@Test
+	@DisplayName("Menu Negocios")
+	@Story("Comparação da Home")
 	public void deveValidarMenuNegocios() throws MalformedURLException, InterruptedException {
 	
 		WebDriver driver = acessarAplicacao();
@@ -279,7 +290,7 @@ public class HomeTest {
 			Assert.assertEquals("Site - Desenvolvimento de Negócios", menuSiteDesenvolvimentoNegocios);
 			
 			String menuVendasDiarias = driver.findElement(By.linkText("Vendas diárias BB Seguros")).getText();
-			Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+			Allure.addAttachment("Menu Negocios", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 			Assert.assertEquals("Vendas diárias BB Seguros", menuVendasDiarias);
 				
 
@@ -289,6 +300,8 @@ public class HomeTest {
 	}
 	
 	@Test
+	@DisplayName("Menu Vida e Carreira")
+	@Story("Comparação da Home")
 	public void deveValidarMenuVidaCarreira() throws MalformedURLException, InterruptedException{
 		
 		WebDriver driver = acessarAplicacao();
@@ -309,7 +322,7 @@ public class HomeTest {
 			Assert.assertEquals("Humanograma BB", menuHumanogramaBB);
 			
 			String menuYammer = driver.findElement(By.linkText("Yammer")).getText();
-			Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+			Allure.addAttachment("Menu Vida Carreira", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
 			Assert.assertEquals("Yammer", menuYammer);
 
 		} finally {
